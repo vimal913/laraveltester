@@ -7,6 +7,10 @@ use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
 class Kernel extends ConsoleKernel
 {
+
+    protected $commands =[
+        \App\Console\Commands\Test::class,
+    ];
     /**
      * Define the application's command schedule.
      *
@@ -15,7 +19,16 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')->hourly();
+        $schedule->command('add:person')->everyTwoMinutes()
+                //  ->emailOutputTo('vimaldg@yopmail.com');
+                ->before(function () {
+                    $this->info("before working");
+                })
+                ->after(function () {
+                    $this->info("after working");
+                    // The task has executed...
+                });
+        // $schedule->command('add:person')->even();
     }
 
     /**

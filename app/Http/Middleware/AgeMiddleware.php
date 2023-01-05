@@ -16,7 +16,10 @@ class AgeMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        
+        // echo "<h1>Hello from middleware </h1>";
+        if($request->age && $request->age < 18){
+           return redirect('serialize');
+        }
         return $next($request);
     }
 }

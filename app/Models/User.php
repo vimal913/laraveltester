@@ -17,10 +17,12 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+    // protected $table = 'users';
     protected $fillable = [
         'name',
         'email',
         'password',
+        'project_id'
     ];
 
     /**
@@ -41,4 +43,24 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function address(){
+
+        return $this->hasOne(Address::class,'user_id','id');
+    }
+    public function addressess(){
+
+        return $this->hasMany(Address::class);
+    }
+    // public function pen(){
+
+    //     return $this->hasMany(pen::class);
+    // }
+
+    // public function project(){
+    //     return $this->belongsTo(Project::class);
+    // }
+    // public function tasks(){
+    //     return $this->hasMany(Task::class);
+    // }
 }

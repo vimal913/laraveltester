@@ -28,14 +28,28 @@ class BasicController extends Controller
             'name' => 'required',
             'email' => 'required',
             'address' => 'required',
+            'file' => 'required',
         ],[
             'name.required' => 'Required*',
             'email.required' => 'Required*',
-            'address.required' => 'Required*'
+            'address.required' => 'Required*',
+            'file.required' => 'Required*'
         ]);
+
+        $file=time().'_'.$request->file->getClientOriginalName();
+        if($file){
+            $fileName = time().'_'.$request->file->getClientOriginalName();
+            $filePath =  $request->file('file')->move(public_path('uploads'), $fileName);
+            $value=[
+                'name' => $request->name,
+                'email' => $request->email,
+                'address' => $request->address,
+                'file' =>   $file,
+            ];
+        }
         
-        Company::create($request->post());
-        // Company::factory()->times(5)->create();
+        
+        Company::create($value);
         return redirect()->route('companies.index')->with('success','Company has been created successfully.');
     }
 // get edit form
@@ -51,9 +65,21 @@ class BasicController extends Controller
             'name' => 'required',
             'email' => 'required',
             'address' => 'required',
+            'file' => 'required',
         ]);
+        $file=time().'_'.$request->file->getClientOriginalName();
+        if($file){
+            $fileName = time().'_'.$request->file->getClientOriginalName();
+            $filePath =  $request->file('file')->move(public_path('uploads'), $fileName);
+            $value=[
+                'name' => $request->name,
+                'email' => $request->email,
+                'address' => $request->address,
+                'file' =>   $file,
+            ];
+        }
         
-        $company->fill($request->post())->save();
+        $company->fill($value)->save();
 
         return redirect()->route('companies.index')->with('success','Company Has Been updated successfully');
     }

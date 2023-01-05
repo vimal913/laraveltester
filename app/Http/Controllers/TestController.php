@@ -10,7 +10,7 @@ class TestController extends Controller
         $path = $request->path();
         $url = $request->url();
         echo "Path = ".$path."<br>" ;
-        echo "URL = ".$url;
+        echo "URL = ".public_path();
 
     }
     public function test(){

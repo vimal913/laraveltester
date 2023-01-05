@@ -69,6 +69,13 @@ width:70%;
                             @enderror
                         </div>
                     </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                            <label for="exampleFormControlFile1">Files</label>@error('file') <span class="errors">{{$message}}</span> @enderror
+                            <input type="file" class="form-control-file" id="exampleFormControlFile1" name="file">
+                            <p><img class="img-thumbnail" width="70" height="75"src="@if(!empty($company->file)){{url('/uploads/'.$company->file)}} @else {{url('/uploads/company.jpg')}} @endif" alt=""></p>
+                         </div>
+                      </div>
                     <button type="submit" style="margin-left: 19em !important;" class="btn btn-primary ml-3">Update</button>
                 </div>
             </form>

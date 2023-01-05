@@ -7,14 +7,14 @@ use Mail;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class MailController extends Controller {
+class EmailController extends Controller {
    public function basic_email() {
       $data = array('name'=>"Vimal");
    
       Mail::send(['text'=>'mail'], $data, function($message) {
          $message->to('vimal.sasikumar@colanonline.com', 'Tutorials Point')->subject
             ('Laravel Basic Testing Mail');
-         $message->from('vimaltech43@gmail.com','Vimal');
+         $message->from('vimaltech913@gmail.com','Vimal');
       });
       echo "Basic Email Sent. Check your inbox.";
    }
@@ -23,7 +23,7 @@ class MailController extends Controller {
       Mail::send('mail', $data, function($message) {
          $message->to('vimal.sasikumar@colanonline.com', 'Tutorials Point')->subject
             ('Laravel HTML Testing Mail');
-         $message->from('vimaltech43@gmail.com','Vimal');
+         $message->from('vimaltech913@gmail.com','Vimal');
       });
       echo "HTML Email Sent. Check your inbox.";
    }
@@ -34,7 +34,7 @@ class MailController extends Controller {
             ('Laravel Testing Mail with Attachment');
          $message->attach('C:\laravel-master\laravel\public\uploads\image.png');
          $message->attach('C:\laravel-master\laravel\public\uploads\test.txt');
-         $message->from('vimaltech43@gmail.com','Vimal');
+         $message->from('vimaltech913@gmail.com','Vimal');
       });
       echo "Email Sent with attachment. Check your inbox.";
    }

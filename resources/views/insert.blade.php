@@ -2,7 +2,8 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
+    {{-- <meta charset="UTF-8"> --}}
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Insert Form</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -42,7 +43,8 @@ width:70%;
       </div>
       @endif
       <form action="{{ route('companies.store') }}" method="POST" enctype="multipart/form-data">
-          @csrf
+          {{-- @csrf --}}
+          {{-- <input type="hidden" name="_token" value="{{ csrf_token() }}" /> --}}
           <div class="row">
               <div class="col-xs-12 col-sm-12 col-md-12">
                   <div class="form-group">
@@ -70,6 +72,12 @@ width:70%;
                       <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                       @enderror --}}
                   </div>
+              </div>
+              <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <label for="exampleFormControlFile1">Files</label>@error('file') <span class="errors">{{$message}}</span> @enderror
+                    <input type="file" class="form-control-file" id="exampleFormControlFile1" name="file">
+                 </div>
               </div>
               <div class="button">
                 <button type="submit" style="margin-left: 19em !important;" class="btn btn-primary ml-3">Submit</button>

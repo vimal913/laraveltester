@@ -37,6 +37,7 @@
                 <thead>
                     <tr class="text-center bg-info text-white">
                         <th>S.No</th>
+                        <th>C_Image</th>
                         <th>Company Name</th>
                         <th>Company Email</th>
                         <th>Company Address</th>
@@ -47,6 +48,7 @@
                     @foreach ($companies as $company)
                         <tr>
                             <td>{{ $company->id }}</td>
+                            <td><img class="img-thumbnail" width="70" height="75"src="@if(!empty($company->file)){{url('/uploads/'.$company->file)}} @else {{url('/uploads/company.jpg')}} @endif" alt=""></td>
                             <td>{{ $company->name }}</td>
                             <td>{{ $company->email }}</td>
                             <td>{{ $company->address }}</td>

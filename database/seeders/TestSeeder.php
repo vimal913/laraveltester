@@ -24,11 +24,22 @@ class TestSeeder extends Seeder
         // ]);
         
         //Multiple  dumy records
+        // $faker = Faker::create();
+        // foreach(range(1,10) as $index){
+        //     DB::table('test')->insert([
+        //         'name' => $faker->name,
+        //         'age' => rand(11,99)
+        //     ]);
+        // }
         $faker = Faker::create();
         foreach(range(1,10) as $index){
-            DB::table('test')->insert([
+            DB::table('users')->insert([
                 'name' => $faker->name,
-                'age' => rand(11,99)
+                'email' => $faker->email,
+                'email_verified_at' => $faker->date(),
+                'password' => $faker->password(),
+                'created_at' => $faker->date(),
+                'updated_at' =>$faker->date(),
             ]);
         }
     }

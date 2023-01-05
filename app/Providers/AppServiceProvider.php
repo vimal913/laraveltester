@@ -25,7 +25,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        //the age variable can be access from any view blade
         view()->share(['age'=>'23']);
+        
         Paginator::useBootstrapFour();
     }
 }

@@ -30,6 +30,18 @@
                                 <span class="text-danger">{{ $errors->first('password')}}</span>
                             @endif
                         </div>
+                        <div class="form-group mb-3">
+                            {{-- <div class="row"> --}}
+                            <div class="form-check mb-3">
+                                <input type="checkbox" name="remember" class="form-check-input" id="remember"/>
+                                <label for="remember">Remember me</label>
+                            </div>
+                            <div class="reset">
+                                <a href="">Forgot Password</a>
+                            </div>
+                        {{-- </div> --}}
+                        </div>
+                        
                         <div class="d-grid mx-auto">
                             <button type="submit" class="btn btn-primary btn-block">Login</button>
                         </div>

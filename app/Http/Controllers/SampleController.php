@@ -45,8 +45,11 @@ class SampleController extends Controller
             'email' => 'required|email',
             'password' => 'required|min:6',
         ]);
+        // if(!Auth::attempt(['email'=>$request->email, 'password' => $request->password],$request->remember)){
+        //     return back()->with('error','Invalid Details');
+        // }
         $credential = $request->only('email','password');
-        if(Auth::attempt($credential)){
+        if(Auth::attempt($credential,$request->remember)){
             return redirect('dashboard');
         }
 

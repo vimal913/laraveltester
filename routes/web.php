@@ -213,14 +213,21 @@ Route::get('/layout',function(){
 // Associations
 Route::get('/users', function(){
 
-    // $user = \App\Models\User::factory()->create(); 
     // // \App\Models\Address::factory()->count(3)->create(); 
+
+
+    // $user = \App\Models\User::factory()->create(); 
+
     // $address = new \App\Models\Address([
     //     'country' => 'china'
     // ]);
 
     // $address->user()->associate($user);
+    
     // $address->save();
+
+
+
 
     // $users = \App\Models\User::has('pen')->with('pen')->get(); //has helps to validate the value 
     $users = \App\Models\User::with('address')->get();
